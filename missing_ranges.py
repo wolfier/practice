@@ -3,7 +3,8 @@ def generate_str(begin, end):
         return str(begin)
     else:
         return str(begin) + '->' + str(end)
-        
+
+
 class Solution(object):
     def findMissingRanges(self, nums, lower, upper):
         """
@@ -43,6 +44,7 @@ class Solution(object):
         
         return result
 
+
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.findMissingRanges([0,1], 0 ,20))
+    print(solution.findMissingRanges([0, 1], 0, 20))
