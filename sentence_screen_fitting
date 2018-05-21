@@ -1,0 +1,35 @@
+class Solution(object):
+    def wordsTyping(self, sentence, rows, cols):
+        all = ""
+        for word in sentence:
+            all += word
+            all += " "
+
+        start = 0
+        length = len(all) - 1
+        for x in range(rows):
+            # add column window length
+            start += cols
+            # if I land on a space increment by one
+            # because it can be skipped
+            if all[start % length] == ' ':
+                start += 1
+            else:
+                # backup until it reaches a space
+                while start > 0 and all[(start - 1) % length] != ' ':
+                    start -= 1
+        # divide by length of sentence length
+        # to get how many times the full sentences was completed
+        return start/length
+
+
+if __name__ == '__main__':
+    solution = Solution()
+    # I_like
+    # apple_
+    # pie_I_
+    # like__
+    # apple_
+    # Fitted one sentence in 5x6 grid
+    print(solution.wordsTyping(["I", "like", "apple", "pie"], 5, 6))
+
